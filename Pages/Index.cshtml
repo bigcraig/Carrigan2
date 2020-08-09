@@ -1,12 +1,26 @@
 ﻿@page
 @model IndexModel
+
 @{
     ViewData["Title"] = "Home page";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<style>
+    a1 {font-size: large}
+</style>
 
 <div class="text-center">
     <h1 class="display-4">Welcome to COVID Safe</h1>
     <h1 class="display-3">Temperature Testing</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>Please login to record temperature</p>
-</div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p> <a href="Measure/Create" class="btn-dark btn-lg">Enter Temperature Measurement</a>.</p>
+        }
+        else
+        {
+        <p>Please login to record temperature</p>
+        }
+
+    </div>

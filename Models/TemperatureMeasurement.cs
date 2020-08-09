@@ -10,7 +10,7 @@ namespace WebApplication2.Models
         
         public decimal Temperature { get; set; }
         public int Id { get; set; }
-        public int ApplicationUserId;
+        public string ApplicationUserId { get; set; }
 
         public DateTime MeasureDate { get; set; }
         public Boolean OfficeToday { get; set; }

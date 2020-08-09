@@ -15,5 +15,6 @@ namespace WebApplication2.Data
         }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<WebApplication2.Models.Company> Company { get; set; }
+        public DbSet<WebApplication2.Models.TemperatureMeasurement> TemperatureMeasurement { get; set; }
     }
 }
