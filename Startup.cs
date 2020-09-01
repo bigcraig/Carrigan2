@@ -39,6 +39,7 @@ namespace WebApplication2
             services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddRazorPages();
         }
 

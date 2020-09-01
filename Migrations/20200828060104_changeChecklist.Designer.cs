@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication2.Data;
 
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200828060104_changeChecklist")]
+    partial class changeChecklist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,7 +233,12 @@ namespace WebApplication2.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserTaskID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("UserTaskID");
 
                     b.ToTable("Checklist");
                 });
@@ -301,21 +308,6 @@ namespace WebApplication2.Migrations
                     b.ToTable("UserTask");
                 });
 
-            modelBuilder.Entity("WebApplication2.Models.checkTask", b =>
-                {
-                    b.Property<int>("UserTaskId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ChecklistId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserTaskId", "ChecklistId");
-
-                    b.HasIndex("ChecklistId");
-
-                    b.ToTable("checkTask");
-                });
-
             modelBuilder.Entity("WebApplication2.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -383,26 +375,18 @@ namespace WebApplication2.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApplication2.Models.Checklist", b =>
+                {
+                    b.HasOne("WebApplication2.Models.UserTask", null)
+                        .WithMany("CheckLists")
+                        .HasForeignKey("UserTaskID");
+                });
+
             modelBuilder.Entity("WebApplication2.Models.TemperatureMeasurement", b =>
                 {
                     b.HasOne("WebApplication2.Models.ApplicationUser", null)
                         .WithMany("TempMeasurements")
                         .HasForeignKey("ApplicationUserId");
-                });
-
-            modelBuilder.Entity("WebApplication2.Models.checkTask", b =>
-                {
-                    b.HasOne("WebApplication2.Models.Checklist", "Checklist")
-                        .WithMany("CheckTasks")
-                        .HasForeignKey("ChecklistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApplication2.Models.UserTask", "UserTask")
-                        .WithMany("CheckTasks")
-                        .HasForeignKey("UserTaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
