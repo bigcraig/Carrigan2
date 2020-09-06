@@ -11,6 +11,7 @@ namespace WebApplication2.Models
         public int Sequence { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool    Completed { get; set; }    
         public  List<checkTask> CheckTasks { get; set; }
      }
 }

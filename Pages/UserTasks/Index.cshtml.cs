@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ namespace WebApplication2.Pages.UserTasks
     {
         private readonly WebApplication2.Data.ApplicationDbContext _context;
         public SelectList ChecklistSelectList { get; set; }
+        [BindProperty]
         public String  SelectedCheckListName { get; set; }
         public IndexModel(WebApplication2.Data.ApplicationDbContext context)
         {
@@ -40,8 +42,12 @@ namespace WebApplication2.Pages.UserTasks
         }
 
         public async Task<IActionResult> OnPostAsync()
-        {     
-            UserTask = await _context.UserTask.Where(t => t.ID == 1007).ToListAsync();
+        {
+            var checklisttest = await _context.Checklist.ToListAsync();
+           // var selectedCheckList = await _context.Checklist.Where(s => s.ID == 2)
+           //     .FirstOrDefaultAsync();
+            //var selectedCheckListID = selectedCheckList.ID;
+                UserTask = await _context.UserTask.Where(t => t.ID == 1007).ToListAsync();
           //  UserTask = await _context.UserTask.ToListAsync();
             return Page();
             
