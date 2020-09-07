@@ -1,0 +1,47 @@
+﻿@page
+@model WebApplication2.Pages.Compliance.IndexModel
+
+@{
+    ViewData["Title"] = "Checklist Compliance Record";
+    
+}
+
+<h1>CheckList Compliance Record</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplianceRecord[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplianceRecord[0].MeasureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplianceRecord[0].ChecklistName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ComplianceRecord) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeasureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChecklistName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

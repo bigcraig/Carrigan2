@@ -12,15 +12,15 @@
 </style>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to COVID Safe</h1>
-    <h1 class="display-3">Temperature Testing</h1>
+    <h1 class="display-4">Working from Home Protocol</h1>
+    <h1 class="display-4">OHS Checklist</h1>
     @if (SignInManager.IsSignedIn(User))
     {
-        <p> <a href="Measure/Create" class="btn-dark btn-lg">Enter Temperature Measurement</a>.</p>
+        <p> <a href="ChecklistEntry/Index" class="btn-dark btn-lg">Complete Checklist</a>.</p>
         }
         else
         {
-        <p>Please login to record temperature</p>
+        <p>Please login to complete checklist</p>
         }
 
     </div>

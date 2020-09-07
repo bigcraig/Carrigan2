@@ -1,0 +1,43 @@
+﻿@page
+@model WebApplication2.Pages.Craig.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Complete Checklist</h1>
+
+
+
+
+<form  method="post">
+    <div class="checkbox checkboxlist col-sm-12">
+        @for (var i = 0; i < Model.UserTask.Count; i++)
+        {
+            
+            <input type="checkbox" asp-for="@Model.UserTask[i].Completed" />
+            <label asp-for="@Model.UserTask[i].Sequence">@Model.UserTask[i].Sequence</label>
+            
+            <b>  <label asp-for="@Model.UserTask[i].Name">@Model.UserTask[i].Name</label> </b>
+            
+            <label asp-for="@Model.UserTask[i].Description">@Model.UserTask[i].Description</label>
+            <br />
+            <input asp-for="@Model.UserTask[i].Description" type="hidden" />
+            <input asp-for="@Model.UserTask[i].Name" type="hidden" />
+            <input asp-for="@Model.UserTask[i].Sequence" type="hidden" />
+            <input asp-for="@Model.UserTask[i].ID" type="hidden" />
+            
+        }
+    </div>
+    <div class="text-center">
+    <input type="submit" value="Update Checklist" class="btn  btn-primary btn-lg btn-block" />
+    </div>
+</form>
+<asp:panel id="divPop" visible="false" runat="server">
+    <asp:TextBox ID="_lname" runat="server"></asp:TextBox>
+
+    <asp:Button ID="Button1" 
+                runat="server" 
+                Text="save" OnClick="Button1_Click" 
+    />
+</asp:panel>

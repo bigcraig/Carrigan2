@@ -16,6 +16,9 @@ namespace WebApplication2.Pages.Craig
     {
         private readonly WebApplication2.Data.ApplicationDbContext _context;
         public IList<bool> Answers { set; get; }
+        public string username;
+        public string applicationUserId;
+
         public IndexModel(WebApplication2.Data.ApplicationDbContext context)
         {
             _context = context;
@@ -24,6 +27,7 @@ namespace WebApplication2.Pages.Craig
         public List<UserTask> UserTask { get; set; }
 
         public int globalCounter = 0;
+        public ComplianceRecord ComplianceRecord { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -50,8 +54,17 @@ namespace WebApplication2.Pages.Craig
             {
                 return RedirectToPage("./errorChecklist");
             }
-           
-            return Page();
+            // all is good here
+            username = HttpContext.User.Identity.Name;
+            
+
+                ComplianceRecord.Email = username;
+            ComplianceRecord.ChecklistName = "checklist 1";
+            ComplianceRecord.MeasureDate = DateTime.Now;
+            _context.ComplianceRecord.Add(ComplianceRecord);
+             _context.SaveChanges();
+
+             return RedirectToPage("/index");
         }
     }
 }

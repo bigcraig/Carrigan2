@@ -39,5 +39,7 @@ namespace WebApplication2.Data
                     
         }
 
+        public DbSet<WebApplication2.Models.ComplianceRecord> ComplianceRecord { get; set; }
+
     }
 }
