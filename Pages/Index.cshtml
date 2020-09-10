@@ -12,15 +12,36 @@
 </style>
 
 <div class="text-center">
-    <h1 class="display-4">Working from Home Protocol</h1>
-    <h1 class="display-4">OHS Checklist</h1>
+    <h3 class="display-4">Working from Home Protocol</h3>
+    
+    <h3>WHS Checklist</h3>
     @if (SignInManager.IsSignedIn(User))
-    {
-        <p> <a href="ChecklistEntry/Index" class="btn-dark btn-lg">Complete Checklist</a>.</p>
+        { 
+            <p class="x_MsoNormal">Your employer is doing their upmost to ensure high standards of&nbsp;health and safety are applied within your home office working environment.</p>
+            <p class="x_MsoNormal">This checklist outlines the principles you should consider for computer-based work, when setting up the space you have at home. If you already have a home office, please review to ensure the correct set up is in place.</p>
+            <p class="x_MsoNormal">Please select &lsquo;Complete Checklist&rsquo; to complete a Workplace Health and Safety (WHS) Checklist. Should you exit the &lsquo;Checklist&rsquo; before completion details won&rsquo;t be saved.</p>
+            <p class="x_MsoNormal">If you have any questions please contact&nbsp;<a href="mailto:support@wfhprotocol.com.au" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable">support@wfhprotocol.com.au</a></p>
+
+        <p> <a href="Checklist/Index" class="btn-dark btn-lg">Complete Checklist</a>.</p>
         }
         else
         {
-        <p>Please login to complete checklist</p>
-        }
+            <p>COVID-19 has created a significant increase in the number of employees working from home (WFH).</p>
+            <p><span style="font-style: inherit; font-weight: inherit;">As a consequence employers have a duty of care for the health and safety of their employees within their home office working environment.</span></p>
+            <p>&nbsp;</p>
+            <p><span style="font-style: inherit; font-weight: inherit;">Failing to do so has a detrimental effect on the employee&rsquo;s wellbeing, productivity and from a business perspective the denying of employee workplace insurance claims and legal action due to the appropriate processes and procedures not being in place.</span></p>
+            <p><span style="font-style: inherit; font-weight: inherit;">WFH Protocol manage the home office working environment set up and provide a structured follow up process ensuring these health and safety measures are maintained.</span></p>
+            <p><span style="font-style: inherit; font-weight: inherit;">&nbsp;</span></p>
+            <p>The guidelines administered are aligned to&nbsp;<strong>NSW Government, SafeWork NSW</strong>&nbsp;to ensure best practice.</p>
+            <p>&nbsp;</p>
+            <p><span style="font-style: inherit; font-weight: inherit;">Our service monitors&nbsp;<strong>&lsquo;Workplace Health and Safety (WHS)&rsquo;</strong>&nbsp;following evaluation and confirmation of eligibility to work from home during the COVID-19 pandemic</span></p>
+            <p style="text-align: left;"><span style="font-style: inherit; font-weight: inherit;">Should an employee start feeling stressed or their&nbsp;<strong>&lsquo;Mental Health&rsquo;</strong>&nbsp;being negatively impacted working from home then it&rsquo;s recommended they contact their employer or workplace employee assistance program to discuss the situation.</span></p>
+            <p>Please login to complete checklist</p>
+            <div class="btn-group-lg" role="group">
+                <a class="btn btn-primary" href="/checklist/employeePage" role="button">employee Info</a>
+                <a class="btn btn-secondary" href="/checklist/employerPage" role="button">employer Info</a>
+                <a class="btn btn-success" href="/checklist/mentalhealth" role="button">mental health Info</a>
+                </div>
+                }
 
-    </div>
+            </div>

@@ -60,7 +60,12 @@ namespace WebApplication2.Pages.Craig
 
                 ComplianceRecord.Email = username;
             ComplianceRecord.ChecklistName = "checklist 1";
-            ComplianceRecord.MeasureDate = DateTime.Now;
+
+            var utcTime = DateTime.UtcNow;
+            ComplianceRecord.MeasureDate = TimeZoneInfo.ConvertTime(DateTime.Now,
+                TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time"));
+
+
             _context.ComplianceRecord.Add(ComplianceRecord);
              _context.SaveChanges();
 

@@ -1,4 +1,5 @@
 ﻿@page
+@using WebApplication2.Models
 @model WebApplication2.Pages.CheckList.IndexModel
 
 @{
@@ -12,18 +13,36 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Checklist[0].Name)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Checklist[0].Sequence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Checklist[0].DisplayFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Checklist[0].Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Checklist[0].Completed)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Checklist) {
+    @foreach (var item in Model.Checklist) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Sequence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayFormat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Completed)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
@@ -31,6 +50,66 @@
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+
+
+<form method="post">
+    <table class="table">
+
+
+
+        @for (var i = 0; i < Model.Checklist.Count; i++)
+        {
+            @switch (Model.Checklist[i].DisplayFormat)
+                    {
+                        case (DisplayFormat.Section):
+                        {
+                            <tr>
+                                <td><label> &emsp;</label></td>
+                                <td> <b> <label asp-for="@Model.Checklist[i].Description">@Model.Checklist[i].Description </label> </b>
+                                     </td>
+                            </tr>
+                            }
+                            break;
+
+                        case (DisplayFormat.Heading):
+                            {
+
+                                <tr>
+                                    <td><label> &emsp;</label></td>
+                                    <td>  <label asp-for="@Model.Checklist[i].Description">@Model.Checklist[i].Description</label>
+                                        
+                                </tr>
+                                
+                            }
+                            break;
+
+                        case (DisplayFormat.Step):
+                        {
+                            <tr>
+                            <td><input type="checkbox" asp-for="@Model.Checklist[i].Completed"/></td>
+                            <td> <label asp-for="@Model.Checklist[i].Description">@Model.Checklist[i].Description</label> </td>
+                            </tr>    
+                        }
+                            break;   
+
+                    }
+
+
+
+            <input asp-for="@Model.Checklist[i].Description" type="hidden"/>
+            <input asp-for="@Model.Checklist[i].DisplayFormat" type="hidden" />
+            <input asp-for="@Model.Checklist[i].Sequence" type="hidden"/>
+            <input asp-for="@Model.Checklist[i].ID" type="hidden"/>
+
+        }
+
+    </table>
+
+
+    <div class="text-center">
+        <input type="submit" value="Update Checklist" class="btn  btn-primary btn-lg btn-block"/>
+    </div>
+</form>

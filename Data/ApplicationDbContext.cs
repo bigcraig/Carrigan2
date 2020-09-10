@@ -24,18 +24,7 @@ namespace WebApplication2.Data
         {
             base.OnModelCreating(modelBuilder);  //needed since overiding model builder
 
-            modelBuilder.Entity<checkTask>()
-                .HasKey(t => new { t.UserTaskId, t.ChecklistId });
-
-            modelBuilder.Entity<checkTask>()
-                .HasOne(pt => pt.UserTask)
-                .WithMany(p => p.CheckTasks)
-                .HasForeignKey(pt => pt.UserTaskId);
-
-            modelBuilder.Entity<checkTask>()
-                .HasOne(pt => pt.Checklist)
-                .WithMany(t => t.CheckTasks)
-                .HasForeignKey(pt => pt.ChecklistId);
+            
                     
         }
 

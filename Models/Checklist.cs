@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 
 namespace WebApplication2.Models
 {
+    public enum DisplayFormat {Section,Heading,Step}
     public class Checklist
     {
-        public Checklist()
-        {
-            
-        }
         public int ID { get; set; }
-        public string Name { get; set; }
-        private int CompanyID { get; set; }
+        public int Sequence { get; set; }
+        public DisplayFormat DisplayFormat {get; set; }
+        public string Description { get; set; }
+        public bool Completed { get; set; }
 
-        public List<checkTask> CheckTasks { get; set; }
     }
 }
