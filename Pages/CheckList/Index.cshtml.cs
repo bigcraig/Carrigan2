@@ -63,7 +63,7 @@ namespace WebApplication2.Pages.CheckList
             _context.ComplianceRecord.Add(ComplianceRecord);
             _context.SaveChanges();
 
-            return RedirectToPage("/index");
+            return RedirectToPage("/SuccessOnSubmit");
         }
     }
 }

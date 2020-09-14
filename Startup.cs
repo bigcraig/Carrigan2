@@ -37,7 +37,7 @@ namespace WebApplication2
                     Configuration.GetConnectionString("DefaultConnection")));
             //automatically perform database migration
             services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false) //ncw was true
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddRazorPages();
