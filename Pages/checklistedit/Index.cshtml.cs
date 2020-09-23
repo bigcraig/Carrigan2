@@ -23,7 +23,7 @@ namespace WebApplication2.Pages.checklistedit
 
         public async Task OnGetAsync()
         {
-            Checklist = await _context.Checklist.ToListAsync();
+            Checklist = await _context.Checklist.OrderBy(x=>x.Sequence).ToListAsync();
         }
     }
 }

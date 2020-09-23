@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication2.Models
 {
-    public enum DisplayFormat {Section,Heading,Step}
+    public enum DisplayFormat {Section,Heading,Step,Textbox,LargeTextbox}
     public class Checklist
     {
         public int ID { get; set; }

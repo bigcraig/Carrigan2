@@ -26,9 +26,9 @@ namespace WebApplication2.Pages.CheckList
          private int globalCounter { get; set; }
 
          public async Task OnGetAsync()
-        {
-            Checklist = await _context.Checklist.ToListAsync();
-        }
+         {
+             Checklist = await _context.Checklist.OrderBy(x => x.Sequence).ToListAsync();
+         }
 
         public IActionResult OnPost()
         {
